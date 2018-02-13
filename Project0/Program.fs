@@ -1,29 +1,18 @@
-// Kyle Ziegler 2018
-// Functional programming practice.
-
-namespace Project0
+//Kyle Ziegler 2018
+//F# functional programming practice.
 
 open System
-open System.Collections.Generic
-open System.IO
-open System.Linq
-open System.Threading.Tasks
-open Microsoft.AspNetCore
-open Microsoft.AspNetCore.Hosting
-open Microsoft.Extensions.Configuration
-open Microsoft.Extensions.Logging
 
-module Program =
-    let exitCode = 0
 
-    let BuildWebHost args =
-        WebHost
-            .CreateDefaultBuilder(args)
-            .UseStartup<Startup>()
-            .Build()
+//Find the last element in a given list.
+module Lists =
+    let rec lastListElement list=
+        match list with
+        | [] -> failwith "List empty"
+        | [item] -> item //When we only have one item in the list, return it.
+        | _::remainingList -> lastListElement remainingList //call the function with the remaining list 
 
-    [<EntryPoint>]
-    let main args =
-        BuildWebHost(args).Run()
+    //Print the integer result
+    let run = lastListElement [1;2;3;]
+    printfn "Result = %i" run
 
-        exitCode

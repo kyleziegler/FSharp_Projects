@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Startup.fs" />
+    <Compile Remove="Startup.fs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Program.fs" />
   </ItemGroup>
 
