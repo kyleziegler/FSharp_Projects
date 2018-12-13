@@ -14,7 +14,7 @@ module Lists =
         | _::remainingList -> lastListElement remainingList //call the function with the remaining list 
 
     let test1 = lastListElement [1 .. 100]
-    printfn "Result = %i" test1
+    printfn "Result from test 1 = %i" test1
 
     //Return the second to last element in a list
     //Fail on empty sets and single element sets
@@ -26,7 +26,7 @@ module Lists =
         | _::remainingList -> secondToLast remainingList
 
     let test2 = secondToLast [1 .. 100]
-    printfn "Result = %i" test2
+    printfn "Result from test 2 = %i" test2
 
     //Count the elements in a list
     let rec numElements list sum = 
@@ -34,8 +34,8 @@ module Lists =
         | [] -> sum
         | _::restOfList -> numElements restOfList (sum+1)
 
-    let test3 = numElements [1 .. 100] 0
-    printfn "Result = %i" test3
+    let test3 = numElements [1 .. 50] 0
+    printfn "Result from test 3= %i" test3
 
     let flattenList l = List.concat l
 
@@ -48,5 +48,20 @@ module Lists =
 
     
     let test4 = flattenList [[1;2;3];[4;5;6];[7;8;9]]
-    test4 |> List.iter (fun x -> printf "%d " x)
+    printfn "Result from test 4 = %A" test4 
+
+
+    //Reverse a list
+    let reverseList back = 
+        let rec r acc = function
+            | [] -> acc //Empy list, return accumulator
+            | firstElem::back -> r (firstElem::acc) back //Call reverse list with 
+        r [] back //Call the funciton with an empty list to end
+
+
+    let test5 = reverseList [1..10]
+    printfn "Result from test 5 = %A" test5 
+
+   
+
 
